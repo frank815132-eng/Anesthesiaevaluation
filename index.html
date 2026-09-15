@@ -105,8 +105,8 @@
 
   /* ── 結果總表（給醫師：一眼看完）── */
   #summary{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(8px,1.4vh,14px);padding:18px 22px;overflow:hidden;-webkit-user-select:text;user-select:text;}
-  .shead{display:flex;align-items:baseline;gap:12px;}
-  .shead b{font-size:clamp(22px,3.6vw,30px);color:var(--teal-dark);}
+  .shead{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;margin-bottom:clamp(6px,1.2vh,14px);}
+  .shead b{font-size:clamp(28px,5.2vw,44px);color:var(--teal-dark);line-height:1.3;}
   .shead span{font-size:clamp(15px,2.4vw,20px);color:#7C9594;}
   .row{display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--line);padding:clamp(9px,1.6vh,16px) 4px;}
   .row .lbl{flex:none;width:9.5em;font-size:clamp(17px,2.6vw,22px);color:#5B7574;font-weight:600;}
@@ -245,7 +245,7 @@ function renderDone(){
     const flag = chosen.some(o=>o.flag);
     return `<div class="row ${flag?'flag':'ok'}">
       <div class="lbl">${s.key}</div>
-      <div class="val">${flag?"⚠ ":""}${chosen.map(o=>o.t).join("、")||"—"}</div></div>`;
+      <div class="val">${flag?"⚠ ":""}${chosen.map(o=>(o.pre||"")+o.t).join("、")||"—"}</div></div>`;
   }).join("");
 
   const t = new Date();
